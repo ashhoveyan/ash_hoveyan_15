@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Seats</title>
+</head>
+<body>
+<h2>Select Seats</h2>
+<form action="/book" method="POST">
+    <input type="hidden" name="showtimeId" value="<%= showtimeId %>">
+    <ul>
+        <% seats.forEach(seat => { %>
+            <li>
+                <input type="checkbox" name="seats[]" value="<%= seat.seat_number %>" <%= seat.is_available ? '' : 'disabled' %>>
+                <label>Seat <%= seat.seat_number %></label>
+            </li>
+        <% }) %>
+    </ul>
+    <button type="submit">Book Seats</button>
+</form>
+</body>
+</html>
