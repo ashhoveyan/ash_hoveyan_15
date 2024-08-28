@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import userRoutes from './userRoutes.js';
 import adminRoutes from './adminRoutes.js';
-import seatRoutes from './seatRoutes.js';
+import theatreRoutes from "./theatreRoutes.js";
 
 const router = Router();
 
@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
 
 router.use('/users', userRoutes);
 router.use('/admin', adminRoutes);
-router.use('/seats', seatRoutes);
+router.use('/theatre', theatreRoutes);
+
 
 export default router;

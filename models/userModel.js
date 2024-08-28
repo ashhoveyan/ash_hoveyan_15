@@ -7,7 +7,7 @@ export default {
         console.log(userData)
         const [rows] = await connection.query(
             `INSERT INTO users ( name, email, password,type) VALUES (?, ?, ?, ?)`,
-            [userData.name, userData.email, userData.password,'user', new Date()]
+            [userData.name, userData.email, userData.password,userData.userType, new Date()]
         )
         return _.head(rows) || null
     },

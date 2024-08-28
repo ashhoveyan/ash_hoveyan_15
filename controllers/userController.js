@@ -5,18 +5,25 @@ import jwt from 'jsonwebtoken';
 export default {
     registration: async  (req, res, next)=> {
         try {
-            const {name, email, password} = req.body;
+            if (req.body.isAdmin === 'true' || req.body.isAdmin === true) {
+                req.body.isAdmin = true;
+            } else {
+                req.body.isAdmin = false;
+            }
+
+            const {name, email, password,isAdmin} = req.body;
             const existingUser = await db.findUserByEmail(email);
             if (existingUser) {
                 res.status(409).json({message: 'Email already exists'})
                 return
             }
-
-           const hashedPassword = md5(md5(password) + process.env.SECRET_FOR_PASSWORD);
+            const userType = isAdmin ? 'admin' : 'user';
+            const hashedPassword = md5(md5(password) + process.env.SECRET_FOR_PASSWORD);
             const userData = {
                 name,
                 email,
                 password: hashedPassword,
+                userType
             }
 
             await db.createUser(userData)

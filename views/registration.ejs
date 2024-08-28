@@ -13,20 +13,22 @@
     <h2>Register</h2>
     <form action="/registration" method="POST">
         <label for="name">Name:
-            <input type="text" name="name" >
+            <input type="text" name="name" placeholder="Name">
 
         </label>
 
         <label for="email">Email:
-            <input type="email" name="email" >
+            <input type="email" name="email" placeholder="Email">
         </label>
 
 
         <label for="password">Password:
-            <input type="password" name="password" >
+            <input type="password" name="password" placeholder="Password">
 
         </label>
-
+        <label>
+            <input type="checkbox" name="isAdmin" value="true"> Register as Admin
+        </label>
         <button type="submit">Register</button>
     </form>
     <div id="success-message" class="success-message"></div>
