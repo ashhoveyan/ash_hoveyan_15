@@ -123,7 +123,7 @@ export default {
                 return res.status(404).json({ message: 'User not found' });
             }
 
-            return res.status(200).json({ message: 'Profile updated successfully', data: updatedData });
+            return res.status(200).json({ message: 'Profile updated successfully', data: userData });
         } catch (error) {
             console.error('Error updating user profile:', error);
             return res.status(500).json({ message: 'Internal server error' });

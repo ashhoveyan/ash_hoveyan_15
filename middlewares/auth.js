@@ -10,7 +10,7 @@ const auth = async (req, res, next) => {
     }
 
     try {
-        const decryptedData = jwt.verify(token, process.env.SECRET_KEY)
+        const decryptedData = jwt.verify(token, process.env.SECRET_FOR_JWT)
 
         console.log(decryptedData);
 
